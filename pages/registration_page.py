@@ -64,6 +64,19 @@ class RegistrationPage:
     def submit(self):
         browser.element('[id="submit"]').click()
 
+    def register(self, user):
+        self.fill_first_name(user.first_name)
+        self.fill_last_name(user.last_name)
+        self.fill_email(user.email)
+        self.choose_gender(user.gender)
+        self.fill_phone(user.phone_number)
+        self.choose_date_of_birth(user.date_of_birth)
+        self.fill_subjects(user.subjects)
+        self.choose_hobbies(user.hobbies)
+        self.upload_picture(user.picture)
+        self.fill_address(user.address)
+        self.submit()
+
     def should_have_registered(self, user):
 
         browser.element("//td[contains(text(), 'Student Name')]/following-sibling::td").should(have.text(user.first_name + ' ' + user.last_name))
