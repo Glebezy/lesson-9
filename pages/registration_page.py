@@ -4,6 +4,9 @@ from selene import browser, be, have
 
 BASE_URL = 'https://demoqa.com/automation-practice-form'
 
+CURRENT_FILE = os.path.abspath(__file__)
+DIRECTORY = os.path.dirname(CURRENT_FILE)
+FILE = os.path.join(DIRECTORY, "..", "resources")
 
 class RegistrationPage:
     def open(self):
@@ -50,7 +53,7 @@ class RegistrationPage:
             browser.element(f'//label[text()="{hobby}"]').click()
 
     def upload_picture(self, picture):
-        browser.element('[id="uploadPicture"]').send_keys(os.path.abspath(f'../resources/{picture}'))
+        browser.element('[id="uploadPicture"]').send_keys(os.path.abspath(f'{FILE}/{picture}'))
 
     def fill_address(self, address):
         browser.element('[id="currentAddress"]').clear().type(address.split(',')[0])
